@@ -1,35 +1,47 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState, useEffect } from "react";
+import "./App.css";
+import axios from "axios";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [dogs, setDogs] = useState([]);
+  const [reset, setReset] = useState(false);
+
+  useEffect(() => {
+    if (reset) {
+      axios
+        .get("https://dog.ceo/api/breeds/image/random/5")
+        .then((response) => {
+          setDogs(response.data.message);
+        });
+      setReset(false);
+    }
+
+    return () => {
+      console.log(
+        "Component is unmounted or data changed. Cleanup code goes here."
+      );
+    };
+  }, [reset]);
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <h1>Memory Dog Card Game</h1>
+      <button
+        onClick={() => {
+          setReset(true);
+        }}
+      >
+        Start Game
+      </button>
+      <ul>
+        {dogs.map((dog, index) => (
+          <li key={index}>
+            <img src={dog} alt={`A cute dog ${index + 1}`} />
+          </li>
+        ))}
+      </ul>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
