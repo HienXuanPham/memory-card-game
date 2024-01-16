@@ -7,7 +7,6 @@ function App() {
   const [reset, setReset] = useState(false);
 
   useEffect(() => {
-    console.log("effect");
     if (reset) {
       axios
         .get("https://dog.ceo/api/breeds/image/random/5")
@@ -24,21 +23,15 @@ function App() {
     };
   }, [reset]);
 
-  console.log("dogs: ", dogs.length);
-
-  for (let i = 0; i < dogs.length; i++) {
-    console.log(dogs[i]);
-  }
-
   return (
     <>
-      <h1>hi</h1>
+      <h1>Memory Dog Card Game</h1>
       <button
         onClick={() => {
           setReset(true);
         }}
       >
-        Click
+        Start Game
       </button>
       <ul>
         {dogs.map((dog, index) => (
