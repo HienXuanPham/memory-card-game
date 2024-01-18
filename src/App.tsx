@@ -63,7 +63,7 @@ function App() {
 
   return (
     <>
-      <h1>Memory Dog Card Game</h1>
+      <h1>Dog Memory Card Game</h1>
       <button
         onClick={() => {
           setReset(true);
@@ -72,17 +72,17 @@ function App() {
         Start Game
       </button>
       <h3>Score: {score}</h3>
-      <ul>
+      <div className="cards-layout">
         {dogs.map((dog, index) => (
-          <li key={index}>
+          <div className="dog-card" key={index}>
             <img
               src={dog}
               alt={`A cute dog ${index + 1}`}
               onClick={() => handleDogSelected(dog)}
             />
-          </li>
+          </div>
         ))}
-      </ul>
+      </div>
     </>
   );
 }
