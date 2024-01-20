@@ -1,8 +1,16 @@
 .home-page {
-  margin-left: 7%;
+  padding: 5%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }
 
 .game-guide {
   font-size: 1.5em;
   padding: 16px 48px 16px 8px;
+}
+
+.start-game-btn {
+  margin: auto;
 }

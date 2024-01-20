@@ -14,7 +14,9 @@ const HomePage: React.FC<HeaderProps> = ({ onStartGame }) => {
           selecting the same card twice. Here's the catch: if you click on a
           card that you've already selected, you lose the game.
         </p>
-        <button onClick={onStartGame}>Start Game</button>
+        <button className="start-game-btn" onClick={onStartGame}>
+          Start Game
+        </button>
       </div>
     </>
   );
