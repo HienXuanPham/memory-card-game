@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./App.css";
-import Header from "./components/Header";
+import HomePage from "./components/HomePage";
 import CardGame from "./components/CardGame";
 import Result from "./components/Result";
 
@@ -23,7 +23,7 @@ function App() {
 
   return (
     <>
-      {!gameStarted && !gameEnded && <Header onStartGame={handleGameStart} />}
+      {!gameStarted && !gameEnded && <HomePage onStartGame={handleGameStart} />}
       {gameStarted && !gameEnded && (
         <CardGame
           onGameStart={handleGameStart}

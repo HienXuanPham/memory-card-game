@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import "../App.css";
+import "../styles/CardGame.css";
 import axios from "axios";
 
 interface CardGameProps {
@@ -68,7 +68,7 @@ const CardGame: React.FC<CardGameProps> = ({
 
   return (
     <>
-      <h3>Score: {score}</h3>
+      <div className="score">Score: {score}</div>
       <div className="cards-layout">
         {dogs.map((dog, index) => (
           <div className="dog-card" key={index}>

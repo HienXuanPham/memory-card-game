@@ -1,28 +1,5 @@
 #root {
   height: 100%;
   width: 100%;
-  margin-left: 7%;
-}
-
-.cards-layout {
-  display: flex;
-  flex-wrap: wrap;
-  text-align: center;
-}
-
-.dog-card {
-  width: 265px;
-  height: 265px;
-  /* background-color: #fdc7d4; */
-  background-color: #c9af98;
-  border-radius: 10px;
-  margin: 10px;
-  cursor: pointer;
-}
-
-.dog-card img {
-  margin: 5px;
-  max-width: 255px;
-  max-height: 255px;
-  border-radius: 10px;
+  /* margin-left: 7%; */
 }
