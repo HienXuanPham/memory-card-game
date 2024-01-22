@@ -1,11 +1,25 @@
+import "../styles/Result.css";
+
 interface ResultProps {
   score: number;
+  onStartGame: (startGame: boolean) => void;
+  onGameEnd: (endGame: boolean) => void;
 }
 
-const Result: React.FC<ResultProps> = ({ score }) => {
+const Result: React.FC<ResultProps> = ({ score, onStartGame, onGameEnd }) => {
   return (
     <>
-      <h1>Your final score is: {score}</h1>
+      <div className="result-page">
+        <h1>Final Score: {score}</h1>
+        <button
+          onClick={() => {
+            onStartGame(true);
+            onGameEnd(false);
+          }}
+        >
+          Play Again
+        </button>
+      </div>
     </>
   );
 };

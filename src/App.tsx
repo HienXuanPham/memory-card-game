@@ -9,12 +9,12 @@ function App() {
   const [gameEnded, setGameEnded] = useState<boolean>(false);
   const [scoreUpdate, setScoreUpdate] = useState<number>(0);
 
-  const handleGameStart = () => {
-    setGameStarted(true);
+  const handleGameStart = (startGame: boolean) => {
+    setGameStarted(startGame);
   };
 
-  const handleGameEnd = () => {
-    setGameEnded(true);
+  const handleGameEnd = (endGame: boolean) => {
+    setGameEnded(endGame);
   };
 
   const handleScoreUpdate = (newScore: number) => {
@@ -25,13 +25,15 @@ function App() {
     <>
       {!gameStarted && !gameEnded && <HomePage onStartGame={handleGameStart} />}
       {gameStarted && !gameEnded && (
-        <CardGame
-          onGameStart={handleGameStart}
+        <CardGame onGameEnd={handleGameEnd} onScoreUpdate={handleScoreUpdate} />
+      )}
+      {gameEnded && (
+        <Result
+          score={scoreUpdate}
+          onStartGame={handleGameStart}
           onGameEnd={handleGameEnd}
-          onScoreUpdate={handleScoreUpdate}
         />
       )}
-      {gameEnded && <Result score={scoreUpdate} />}
     </>
   );
 }
