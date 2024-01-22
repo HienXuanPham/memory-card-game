@@ -1,7 +1,7 @@
 import "../styles/HomePage.css";
 
 interface HeaderProps {
-  onStartGame: () => void;
+  onStartGame: (startGame: boolean) => void;
 }
 
 const HomePage: React.FC<HeaderProps> = ({ onStartGame }) => {
@@ -14,7 +14,7 @@ const HomePage: React.FC<HeaderProps> = ({ onStartGame }) => {
           selecting the same card twice. Here's the catch: if you click on a
           card that you've already selected, you lose the game.
         </p>
-        <button className="start-game-btn" onClick={onStartGame}>
+        <button className="start-game-btn" onClick={() => onStartGame(true)}>
           Start Game
         </button>
       </div>

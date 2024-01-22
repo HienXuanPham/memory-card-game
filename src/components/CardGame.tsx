@@ -3,16 +3,11 @@ import "../styles/CardGame.css";
 import axios from "axios";
 
 interface CardGameProps {
-  onGameStart: () => void;
-  onGameEnd: () => void;
+  onGameEnd: (endGame: boolean) => void;
   onScoreUpdate: (score: number) => void;
 }
 
-const CardGame: React.FC<CardGameProps> = ({
-  onGameStart,
-  onGameEnd,
-  onScoreUpdate,
-}) => {
+const CardGame: React.FC<CardGameProps> = ({ onGameEnd, onScoreUpdate }) => {
   const [dogs, setDogs] = useState<string[]>([]);
   const [dogSelected, setDogSelected] = useState<string[]>([]);
   const [score, setScore] = useState<number>(0);
@@ -20,7 +15,6 @@ const CardGame: React.FC<CardGameProps> = ({
   useEffect(() => {
     axios.get("https://dog.ceo/api/breeds/image/random/5").then((response) => {
       setDogs(response.data.message);
-      onGameStart();
     });
 
     return () => {
@@ -35,7 +29,7 @@ const CardGame: React.FC<CardGameProps> = ({
     const didWin = score === dogs.length - 1;
 
     if (isDuplicate || didWin) {
-      onGameEnd();
+      onGameEnd(true);
       onScoreUpdate(isDuplicate ? score : score + 1);
       setDogSelected([]);
       setScore(0);
@@ -68,7 +62,7 @@ const CardGame: React.FC<CardGameProps> = ({
 
   return (
     <>
-      <div className="score">Score: {score}</div>
+      <div className="score">🐶 {score}</div>
       <div className="cards-layout">
         {dogs.map((dog, index) => (
           <div className="dog-card" key={index}>
